@@ -10,6 +10,16 @@ console.log(newWithdrawTotal);
 
 
 
+// step 7: anti string 
+withdrawField.value='';
+
+if(isNaN (newWithdrawTotal)){
+    alert('please provide a valid number');
+    return;
+}
+
+
+
 
 // step 3: get previous and current total withdraw
 const withdrawTotalElement=document.getElementById('withdraw-total');
@@ -17,11 +27,6 @@ const previousWithdrawTotalString=withdrawTotalElement.innerText;
 const previousWithdrawTotal=parseFloat(previousWithdrawTotalString);
 
 
-// step 4:calculate previous and new total withdraw amount
-
-const currentWithdrawTotal= previousWithdrawTotal + newWithdrawTotal;
-
-withdrawTotalElement.innerText= currentWithdrawTotal;
 
 // step 5: get the previous balance total 
 
@@ -30,15 +35,23 @@ const balanceTotalString=balanceTotalElement.innerText;
 const balanceTotal=parseFloat(balanceTotalString);
 
 
-console.log(balanceTotal);
 
+
+if(newWithdrawTotal > balanceTotal){
+    alert('your balance have not sufficient');
+    return;
+}
+
+// step 4:calculate previous and new total withdraw amount
+
+const currentWithdrawTotal= previousWithdrawTotal + newWithdrawTotal;
+
+withdrawTotalElement.innerText= currentWithdrawTotal;
 // step 6: new balance total
 const newBalanceTotal= balanceTotal - newWithdrawTotal;
 balanceTotalElement.innerText=newBalanceTotal;
 
 
-// step 7: anti string 
-withdrawField.value='';
 
 
 
